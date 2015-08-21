@@ -1,21 +1,23 @@
 <?php
-/**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/ZendSkeletonApplication for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
- */
 
 return array(
+    'controllers' => array(
+        'invokables' => array(            
+            'Docentes\Controller\Index' => 'Docentes\Controller\IndexController'            
+        ),
+    ),
+    
     'router' => array(
         'routes' => array(
-            'home' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+            'docentes' => array(
+                'type' => 'Segment',
                 'options' => array(
-                    'route'    => '/',
+                    'route'    => '/docentes[/[:action]]',
+                    'constraints' => array(                       
+                        'action'     => '[a-zA-Z0-9_-]*',
+                    ),
                     'defaults' => array(
-                        'controller' => 'Application\Controller\Index',
+                        'controller' => 'Docentes\Controller\Index',
                         'action'     => 'index',
                     ),
                 ),
@@ -39,7 +41,7 @@ return array(
                     'default' => array(
                         'type'    => 'Segment',
                         'options' => array(
-                            'route'    => '/[:controller[/:action]]',
+                            'route'    => '/[:controller[/:action][/:id]]',
                             'constraints' => array(
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
@@ -71,11 +73,7 @@ return array(
             ),
         ),
     ),
-    'controllers' => array(
-        'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController'
-        ),
-    ),
+    
     'view_manager' => array(
         'display_not_found_reason' => true,
         'display_exceptions'       => true,
@@ -83,20 +81,14 @@ return array(
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
         'template_map' => array(
-            'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
-            'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
+            'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',           
+            'docentes/index/index' => __DIR__ . '/../view/docentes/index/index.phtml',
+            'docentes/docentes/index' => __DIR__ . '/../view/docentes/docentes/index.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
         ),
         'template_path_stack' => array(
-            __DIR__ . '/../view',
+            'docentes' =>__DIR__ . '/../view',
         ),
-    ),
-    // Placeholder for console routes
-    'console' => array(
-        'router' => array(
-            'routes' => array(
-            ),
-        ),
-    ),
+    ),    
 );

@@ -11,11 +11,36 @@ namespace Autenticacion\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Autenticacion\Form\Formularios;
 
 class IndexController extends AbstractActionController
 {
     public function indexAction()
-    {
-        return new ViewModel();
+    {       
+            
+        $form = new Formularios("form");
+        //$id=(int) $this->params()->formRoute('id',0);
+        $valores = array(
+            "titulo"=>"Inicio de Sesion",
+            "form"=>$form,
+            'url'=>  $this->getRequest()->getBaseUrl()
+           // 'ids'=>$id
+        );
+
+        return new ViewModel($valores);
+                
+    }
+    
+    public function login()
+    {       
+        if($this->getRequest()->isPost())
+        {
+            $this->dbAdapter=  $this->getServiceLocator()->get('Zend\Db\Adapter');
+            $u= new Usuarios($this->dbAdapter);
+            $data = $this->request->getPost();
+           
+            return $this->redirect()->toUrl($this->getRequest()->getBaseUrl().'/autenticacion/index/index');
+            
+        }
     }
 }

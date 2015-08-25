@@ -35,12 +35,12 @@ if(!empty($this->id))
 <div class="form_element">
 
 <?php
-    $correo = $form->get('correo');
-    echo $formLabel->openTag().$correo->getOption('label')." ";
+    $codigo = $form->get('correo');
+    echo $formLabel->openTag().$codigo->getOption('label')." ";
     
     //echo $this->formElementErrors($name);
     echo $formLabel->closeTag();
-    echo $this->formInput($correo);
+    echo $this->formInput($codigo);
 ?>
 </div>
 <?php echo $this->formElement($form->get('send')) ?>

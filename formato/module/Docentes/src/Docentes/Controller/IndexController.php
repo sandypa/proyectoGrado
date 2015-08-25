@@ -16,7 +16,7 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-        if($this->getRequest()->isPost())
+        /*if($this->getRequest()->isPost())
         {
             $this->dbAdapter=  $this->getServiceLocator()->get('Zend\Db\Adapter');
             $d= new Docentes($this->dbAdapter);
@@ -33,10 +33,10 @@ class IndexController extends AbstractActionController
                 "form"=>$form,
                 'url'=>  $this->getRequest()->getBaseUrl()
                // 'ids'=>$id
-            );
+            );*/
             
-            return new ViewModel($valores);
-        }
+            return new ViewModel();
+        //}
     }
     public function crearAction()
     {

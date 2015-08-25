@@ -11,11 +11,23 @@ namespace Docentes\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Docentes\Form\Formularios;
 
 class FormularioController extends AbstractActionController
 {
-    public function crearAction()
-    {
-        return new ViewModel();
+    public function indexAction()
+    {       
+            
+        $form = new Formularios("form");
+        //$id=(int) $this->params()->formRoute('id',0);
+        $valores = array(
+            "titulo"=>"Creacion de Docentes",
+            "form"=>$form,
+            'url'=>  $this->getRequest()->getBaseUrl()
+           // 'ids'=>$id
+        );
+
+        return new ViewModel($valores);
+                
     }
 }

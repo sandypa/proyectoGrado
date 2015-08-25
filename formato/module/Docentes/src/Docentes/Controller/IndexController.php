@@ -16,6 +16,31 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
+        if($this->getRequest()->isPost())
+        {
+            $this->dbAdapter=  $this->getServiceLocator()->get('Zend\Db\Adapter');
+            $d= new Docentes($this->dbAdapter);
+            $data = $this->request->getPost();
+            $d->crearDocente($data);     
+            return $this->redirect()->toUrl($this->getRequest()->getBaseUrl().'/application/index');
+            
+        }  else {
+            
+            $form = new Formularios("form");
+            //$id=(int) $this->params()->formRoute('id',0);
+            $valores = array(
+                "titulo"=>"Registro de Docentes",
+                "form"=>$form,
+                'url'=>  $this->getRequest()->getBaseUrl()
+               // 'ids'=>$id
+            );
+            
+            return new ViewModel($valores);
+        }
+    }
+    public function crearAction()
+    {
         return new ViewModel();
     }
+    
 }

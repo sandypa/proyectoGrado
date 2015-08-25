@@ -7,19 +7,14 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
-namespace Application\Controller;
+namespace Docentes\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-class IndexController extends AbstractActionController
+class FormularioController extends AbstractActionController
 {
-    public function indexAction()
-    {
-        return new ViewModel();
-    }
-    
-    public function pruebaAction()
+    public function crearAction()
     {
         return new ViewModel();
     }

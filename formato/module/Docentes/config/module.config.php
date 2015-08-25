@@ -3,7 +3,8 @@
 return array(
     'controllers' => array(
         'invokables' => array(            
-            'Docentes\Controller\Index' => 'Docentes\Controller\IndexController'            
+            'Docentes\Controller\Index' => 'Docentes\Controller\IndexController' ,
+            'Docentes\Controller\Formulario' => 'Docentes\Controller\FormularioController',
         ),
     ),
     
@@ -12,7 +13,7 @@ return array(
             'docentes' => array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route'    => '/docentes[/[:action]]',
+                    'route'    => '/',
                     'constraints' => array(                       
                         'action'     => '[a-zA-Z0-9_-]*',
                     ),

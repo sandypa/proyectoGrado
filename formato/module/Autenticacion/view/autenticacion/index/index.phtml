@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-<h1>Esta en Docentes/Formulario/crear</h1>
-=======
 <h1><?php echo $this->titulo?></h1>
 <?php
 $form = $this->form;
@@ -8,7 +5,7 @@ $form->prepare();
 
 
 $form->setAttributes(array(
-    'action' => $this->url.'/application/formulario/crear',
+    'action' => $this->url.'/docentes/index/',
     'method' => 'post'
 ));
 // Get the form label plugin
@@ -27,7 +24,7 @@ if(!empty($this->id))
 ?>
 <div class="form_element">
 <?php
-    $name = $form->get('nombre');
+    $name = $form->get('nombre');   
     echo $formLabel->openTag().$name->getOption('label')." ";
     
     //echo $this->formElementErrors($name);
@@ -38,7 +35,7 @@ if(!empty($this->id))
 <div class="form_element">
 
 <?php
-    $codigo = $form->get('correo');
+    $codigo = $form->get('codigo');
     echo $formLabel->openTag().$codigo->getOption('label')." ";
     
     //echo $this->formElementErrors($name);
@@ -48,4 +45,3 @@ if(!empty($this->id))
 </div>
 <?php echo $this->formElement($form->get('send')) ?>
 <?php echo $this->form()->closeTag() ?>
->>>>>>> b07e8bd1d8b897d8ba7d02e0de51b01b348ccda2

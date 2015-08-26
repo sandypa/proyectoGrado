@@ -5,6 +5,7 @@ namespace Docentes\Form;
 
 use Zend\Form\Form;
 use Zend\Form\Factory;
+use Zend\Form\Element;
 
 class Formularios extends Form{
     
@@ -65,20 +66,18 @@ class Formularios extends Form{
                 'class'=>'input'
             ),
         ));
+        $radio = new Element\Radio('facultad');
+        $radio->setLabel('Facutad');
+         
+        $this->add($radio);
+        
+        $radio = new Element\Radio('unidadacademica');
+        $radio->setLabel('Unidad Academica');
+         
+        $this->add($radio);
         
         $this->add(array(
-            'name'=>'unidadacademica',
-            'options'=> array(
-                'label'=>'Unidad Academica',
-            ),
-            'attributes'=>array(
-                'type'=>'text',
-                'class'=>'input'
-            ),
-        ));
-        
-        $this->add(array(
-            'name'=>'semestreaño',
+            'name'=>'semestre',
             'options'=> array(
                 'label'=>'Semestre del Año',
             ),

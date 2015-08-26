@@ -11,32 +11,25 @@ namespace Docentes\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Docentes\Form\Formularios;
 
 class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-        /*if($this->getRequest()->isPost())
-        {
-            $this->dbAdapter=  $this->getServiceLocator()->get('Zend\Db\Adapter');
-            $d= new Docentes($this->dbAdapter);
-            $data = $this->request->getPost();
-            $d->crearDocente($data);     
-            return $this->redirect()->toUrl($this->getRequest()->getBaseUrl().'/application/index');
+        $form = new Formularios("form");
+        //$id=(int) $this->params()->formRoute('id',0);
+        $valores = array(
+            "titulo"=>"Creacion de Docentes",
+            "form"=>$form,
             
-        }  else {
-            
-            $form = new Formularios("form");
-            //$id=(int) $this->params()->formRoute('id',0);
-            $valores = array(
-                "titulo"=>"Registro de Docentes",
-                "form"=>$form,
-                'url'=>  $this->getRequest()->getBaseUrl()
-               // 'ids'=>$id
-            );*/
-            
-            return new ViewModel();
-        //}
+            'url'=>  $this->getRequest()->getBaseUrl()
+           // 'ids'=>$id
+        );
+        $form->get("facultad")->setValueOptions(array('cn'=>'Ciencias Naturales e Ingenierias','cs'=>'Ciencias Socioeconomicas y Empresariales'));
+        $form->get("unidadacademica")->setValueOptions(array('d'=>'Departamento  ','o'=>'Oficina  ','depe'=>'Dependencia'));
+        return new ViewModel($valores, $form);
+        
     }
     public function crearAction()
     {

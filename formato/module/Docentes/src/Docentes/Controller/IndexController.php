@@ -23,7 +23,7 @@ class IndexController extends AbstractActionController
         
         if($this->getRequest()->isPost()){
             
-            $this->dbAdapter= $this->getServiceLocator()->get('Zend\DB\Adapter');
+            $this->dbAdapter= $this->getServiceLocator()->get('Zend\Db\Adapter');
             $d= new Docentes($this->dbAdapter);
             $data = $this->request->getPost();
             $d->crearDocente($data);
@@ -42,8 +42,8 @@ class IndexController extends AbstractActionController
                // 'ids'=>$id
                 );
         }
-        $form->get("facultad")->setValueOptions(array('cn'=>'Ciencias Naturales e Ingenierias','cs'=>'Ciencias Socioeconomicas y Empresariales'));
-        $form->get("unidadacademica")->setValueOptions(array('d'=>'Departamento  ','o'=>'Oficina  ','depe'=>'Dependencia'));
+        $form->get("facultad")->setValueOptions(array('1'=>'Ciencias Naturales e Ingenierias','2'=>'Ciencias Socioeconomicas y Empresariales'));
+        $form->get("unidadacademica")->setValueOptions(array('1'=>'Departamento  ','2'=>'Oficina  ','3'=>'Dependencia'));
         return new ViewModel($valores, $form);
         
     }

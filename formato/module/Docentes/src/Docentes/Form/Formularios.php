@@ -24,7 +24,7 @@ class Formularios extends Form{
         ));
         
         $this->add(array(
-            'name'=>'nombre',
+            'name'=>'nombres',
             'options'=> array(
                 'label'=>'Nombre',
             ),
@@ -35,9 +35,9 @@ class Formularios extends Form{
         ));
         
         $this->add(array(
-            'name'=>'apellido',
+            'name'=>'apellidos',
             'options'=> array(
-                'label'=>'Apellido',
+                'label'=>'Apellidos',
             ),
             'attributes'=>array(
                 'type'=>'text',
@@ -67,9 +67,11 @@ class Formularios extends Form{
             ),
         ));
         $radio = new Element\Radio('facultad');
-        $radio->setLabel('Facutad');
-         
+        $radio->setLabel('Facultad');
+        
         $this->add($radio);
+        
+        
         
         $radio = new Element\Radio('unidadacademica');
         $radio->setLabel('Unidad Academica');

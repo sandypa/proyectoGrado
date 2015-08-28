@@ -92,8 +92,8 @@ class Docentes extends TableGateway
         $this->unidadacademica = $unidadacademica;
     }
 
-    function setSemestreaño($semestreaño) {
-        $this->semestreaño = $semestreaño;
+    function setSemestreaño($semestre) {
+        $this->semestreaño = $semestre;
     }
 
     function setFormacion($formacion) {

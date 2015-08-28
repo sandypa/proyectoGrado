@@ -5,7 +5,7 @@ $form->prepare();
 
 
 $form->setAttributes(array(
-    'action' => $this->url.'/docentes/index/',
+    'action' => $this->url.'/docentes/index/index.phtml',
     'method' => 'post'
 ));
 // Get the form label plugin
@@ -25,33 +25,33 @@ if(!empty($this->id))
     
 <div class="form_element">
 <?php
-    $name = $form->get('cedula');   
-    echo $formLabel->openTag().$name->getOption('label')." ";
+    $cedula = $form->get('cedula');   
+    echo $formLabel->openTag().$cedula->getOption('label')." ";
     
     //echo $this->formElementErrors($name);
     echo $formLabel->closeTag();
-    echo $this->formInput($name);
+    echo $this->formInput($cedula);
 ?>
 </div>
 <div class="form_element">
 <?php
-    $name = $form->get('nombre');   
-    echo $formLabel->openTag().$name->getOption('label')." ";
+    $nombres = $form->get('nombre');   
+    echo $formLabel->openTag().$nombres->getOption('label')." ";
     
     //echo $this->formElementErrors($name);
     echo $formLabel->closeTag();
-    echo $this->formInput($name);
+    echo $this->formInput($nombres);
 ?>
 </div>
 <div class="form_element">
 
 <?php
-    $codigo = $form->get('apellido');
-    echo $formLabel->openTag().$codigo->getOption('label')." ";
+    $apellidos = $form->get('apellido');
+    echo $formLabel->openTag().$apellidos->getOption('label')." ";
     
     //echo $this->formElementErrors($name);
     echo $formLabel->closeTag();
-    echo $this->formInput($codigo);
+    echo $this->formInput($apellidos);
 ?>
 </div>
     
@@ -71,12 +71,12 @@ if(!empty($this->id))
 
 <div class="form_element">
     <?php
-    $gender = $form->get('facultad');
-    echo $formLabel->openTag() . $gender->getLabel();
+    $facultad = $form->get('facultad');
+    echo $formLabel->openTag() . $facultad->getLabel();
     echo $formLabel->closeTag();
     echo "<br/>";
-    echo $this->formRadio($gender);
-    echo $this->formElementErrors($gender);
+    echo $this->formRadio($facultad);
+    echo $this->formElementErrors($facultad);
     ?>
 </div>
     <br />
@@ -85,12 +85,12 @@ if(!empty($this->id))
 
 <div class="form_element">
     <?php
-    $gender = $form->get('unidadacademica');
-    echo $formLabel->openTag() . $gender->getLabel();
+    $unidadacademica = $form->get('unidadacademica');
+    echo $formLabel->openTag() . $unidadacademica->getLabel();
     echo $formLabel->closeTag();
     echo "<br/>";
-    echo $this->formRadio($gender);
-    echo $this->formElementErrors($gender);
+    echo $this->formRadio($unidadacademica);
+    echo $this->formElementErrors($unidadacademica);
     ?>
 </div>
     <br />
@@ -98,60 +98,60 @@ if(!empty($this->id))
 <div class="form_element">
 
 <?php
-    $codigo = $form->get('semestre');
-    echo $formLabel->openTag().$codigo->getOption('label')." ";
+    $semestre = $form->get('semestre');
+    echo $formLabel->openTag().$semestre->getOption('label')." ";
     
     //echo $this->formElementErrors($name);
     echo $formLabel->closeTag();
-    echo $this->formInput($codigo);
+    echo $this->formInput($semestre);
 ?>
 </div>
     
 <div class="form_element">
 
 <?php
-    $codigo = $form->get('formacion');
-    echo $formLabel->openTag().$codigo->getOption('label')." ";
+    $formacion = $form->get('formacion');
+    echo $formLabel->openTag().$formacion->getOption('label')." ";
     
     //echo $this->formElementErrors($name);
     echo $formLabel->closeTag();
-    echo $this->formInput($codigo);
+    echo $this->formInput($formacion);
 ?>
 </div>
     
 <div class="form_element">
 
 <?php
-    $codigo = $form->get('direccion');
-    echo $formLabel->openTag().$codigo->getOption('label')." ";
+    $direccion = $form->get('direccion');
+    echo $formLabel->openTag().$direccion->getOption('label')." ";
     
     //echo $this->formElementErrors($name);
     echo $formLabel->closeTag();
-    echo $this->formInput($codigo);
+    echo $this->formInput($direccion);
 ?>
 </div>
     
 <div class="form_element">
 
 <?php
-    $codigo = $form->get('telefono');
-    echo $formLabel->openTag().$codigo->getOption('label')." ";
+    $telefono = $form->get('telefono');
+    echo $formLabel->openTag().$telefono->getOption('label')." ";
     
     //echo $this->formElementErrors($name);
     echo $formLabel->closeTag();
-    echo $this->formInput($codigo);
+    echo $this->formInput($telefono);
 ?>
 </div>
     
 <div class="form_element">
 
 <?php
-    $codigo = $form->get('correo');
-    echo $formLabel->openTag().$codigo->getOption('label')." ";
+    $correo = $form->get('correo');
+    echo $formLabel->openTag().$correo->getOption('label')." ";
     
     //echo $this->formElementErrors($name);
     echo $formLabel->closeTag();
-    echo $this->formInput($codigo);
+    echo $this->formInput($correo);
 ?>
 </div>
 <?php echo $this->formElement($form->get('send')) ?>

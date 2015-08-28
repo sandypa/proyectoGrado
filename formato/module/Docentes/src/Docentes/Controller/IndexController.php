@@ -28,7 +28,7 @@ class IndexController extends AbstractActionController
             $data = $this->request->getPost();
             $d->crearDocente($data);
             
-            return $this->redirect()->toUrl($this->getRequest()->getBaseUrl().'/docentes/index/crear.phtml');
+            return $this->redirect()->toUrl($this->getRequest()->getBaseUrl().'/docentes/');
             
         }  else {
         

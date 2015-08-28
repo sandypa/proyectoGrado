@@ -13,7 +13,7 @@ class Docentes extends TableGateway
     private $codigo;
     private $facultad;
     private $unidadacademica;
-    private $semestreaño;
+    private $semestre;
     private $formacion;
     private $direccion;
     private $telefono;
@@ -48,8 +48,8 @@ class Docentes extends TableGateway
         return $this->unidadacademica;
     }
 
-    function getSemestreaño() {
-        return $this->semestreaño;
+    function getSemestre() {
+        return $this->semestre;
     }
 
     function getFormacion() {
@@ -92,8 +92,8 @@ class Docentes extends TableGateway
         $this->unidadacademica = $unidadacademica;
     }
 
-    function setSemestreaño($semestre) {
-        $this->semestreaño = $semestre;
+    function setSemestre($semestre) {
+        $this->semestre = $semestre;
     }
 
     function setFormacion($formacion) {
@@ -120,7 +120,7 @@ class Docentes extends TableGateway
         $this->codigo=$datos["codigo"];
         $this->facultad=$datos["datos"];
         $this->unidadacademica=$datos["unidadacademica"];
-        $this->semestreaño=$datos["semestreaño"];
+        $this->semestre=$datos["semestre"];
         $this->formacion=$datos["formacion"];
         $this->direccion=$datos["direccion"];
         $this->telefono=$datos["telefono"];

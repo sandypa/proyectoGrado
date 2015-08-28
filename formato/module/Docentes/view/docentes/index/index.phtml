@@ -5,7 +5,7 @@ $form->prepare();
 
 
 $form->setAttributes(array(
-    'action' => $this->url.'/docentes/index/index.phtml',
+    'action' => $this->url.'/docentes/',
     'method' => 'post'
 ));
 // Get the form label plugin
@@ -35,7 +35,7 @@ if(!empty($this->id))
 </div>
 <div class="form_element">
 <?php
-    $nombres = $form->get('nombre');   
+    $nombres = $form->get('nombres');   
     echo $formLabel->openTag().$nombres->getOption('label')." ";
     
     //echo $this->formElementErrors($name);
@@ -46,7 +46,7 @@ if(!empty($this->id))
 <div class="form_element">
 
 <?php
-    $apellidos = $form->get('apellido');
+    $apellidos = $form->get('apellidos');
     echo $formLabel->openTag().$apellidos->getOption('label')." ";
     
     //echo $this->formElementErrors($name);

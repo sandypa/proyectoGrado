@@ -157,7 +157,7 @@ class Docentes extends TableGateway
             'codigo'=> $this->codigo,
             'facultad' => $this->facultad,
             'unidadacademica'=>  $this->unidadacademica,
-            'semestreaño'=> $this->semestreaño,
+            'semestre'=> $this->semestre,
             'formacion'=>  $this->formacion,
             'direccion'=> $this->direccion,
             'telefono'=> $this->telefono,

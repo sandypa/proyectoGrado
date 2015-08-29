@@ -11,28 +11,38 @@ namespace Actividades\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Docentes\Form\Formularios;
+use Actividades\Form\Formularios;
+use Actividades\Model\Entity\Actividades;
 
 class IndexController extends AbstractActionController
 {
+    public $dbAdapter;
+    
     public function indexAction()
     {
         $form = new Formularios("form");
         //$id=(int) $this->params()->formRoute('id',0);
         $valores = array(
-            "titulo"=>"Creacion de Docentes",
-            "form"=>$form,
-            
+            "titulo"=>"Creacion de Actividades",
+            "form"=>$form,            
             'url'=>  $this->getRequest()->getBaseUrl()
            // 'ids'=>$id
         );
-        $form->get("facultad")->setValueOptions(array('cn'=>'Ciencias Naturales e Ingenierias','cs'=>'Ciencias Socioeconomicas y Empresariales'));
-        $form->get("unidadacademica")->setValueOptions(array('d'=>'Departamento  ','o'=>'Oficina  ','depe'=>'Dependencia'));
+        
         return new ViewModel($valores, $form);
         
     }
     public function crearAction()
     {
+        if($this->getRequest()->isPost())
+        {
+            $this->dbAdapter=  $this->getServiceLocator()->get('Zend\Db\Adapter');
+            $u= new Actividades($this->dbAdapter);
+            $data = $this->request->getPost();
+            $u->crearActividad($data);
+            return $this->redirect()->toUrl($this->getRequest()->getBaseUrl().'/actividades/index/index');
+            
+        }
         return new ViewModel();
     }
     

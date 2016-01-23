@@ -7,172 +7,73 @@ use Zend\Db\Adapter\Adapter;
 
 class Actividades extends TableGateway
 {
-    private $cedula;
-    private $apellidos;
-    private $nombres;
-    private $codigo;
-    private $facultad;
-    private $unidadacademica;
-    private $semestreaño;
-    private $formacion;
-    private $direccion;
-    private $telefono;
-    private $correo;
+    private $codactividades;    
+    private $nombre;
+    private $descripcion;
+    private $responsable;
+    private $valoracion;
+    private $coddocente;
+    private $codtipo;
+   
     
     public function __construct(Adapter $adapter=null, $databaseSchema=null, ResultSet $selectResultProtorype=null)
     {
         return parent::__construct('actividades', $adapter, $databaseSchema, $selectResultProtorype);
-    }
-    
-    function getCedula() {
-        return $this->cedula;
-    }
+    } 
 
-    function getApellidos() {
-        return $this->apellidos;
-    }
-
-    function getNombres() {
-        return $this->nombres;
-    }
-
-    function getCodigo() {
-        return $this->codigo;
-    }
-
-    function getFacultad() {
-        return $this->facultad;
-    }
-
-    function getUnidadacademica() {
-        return $this->unidadacademica;
-    }
-
-    function getSemestreaño() {
-        return $this->semestreaño;
-    }
-
-    function getFormacion() {
-        return $this->formacion;
-    }
-
-    function getDireccion() {
-        return $this->direccion;
-    }
-
-    function getTelefono() {
-        return $this->telefono;
-    }
-
-    function getCorreo() {
-        return $this->correo;
-    }
-
-    function setCedula($cedula) {
-        $this->cedula = $cedula;
-    }
-
-    function setApellidos($apellidos) {
-        $this->apellidos = $apellidos;
-    }
-
-    function setNombres($nombres) {
-        $this->nombres = $nombres;
-    }
-
-    function setCodigo($codigo) {
-        $this->codigo = $codigo;
-    }
-
-    function setFacultad($facultad) {
-        $this->facultad = $facultad;
-    }
-
-    function setUnidadacademica($unidadacademica) {
-        $this->unidadacademica = $unidadacademica;
-    }
-
-    function setSemestreaño($semestreaño) {
-        $this->semestreaño = $semestreaño;
-    }
-
-    function setFormacion($formacion) {
-        $this->formacion = $formacion;
-    }
-
-    function setDireccion($direccion) {
-        $this->direccion = $direccion;
-    }
-
-    function setTelefono($telefono) {
-        $this->telefono = $telefono;
-    }
-
-    function setCorreo($correo) {
-        $this->correo = $correo;
-    }
-
-    private function cargarAtribDocen($datos = array())
+    private function cargarAtribActividades($datos = array())
     {
-        $this->cedula=$datos["cedula"];
-        $this->apellidos=$datos["apellidos"];
-        $this->nombres=$datos["nombres"];
-        $this->codigo=$datos["codigo"];
-        $this->facultad=$datos["datos"];
-        $this->unidadacademica=$datos["unidadacademica"];
-        $this->semestreaño=$datos["semestreaño"];
-        $this->formacion=$datos["formacion"];
-        $this->direccion=$datos["direccion"];
-        $this->telefono=$datos["telefono"];
-        $this->correo=$datos["correo"];
+        $this->codactividades=$datos["codactividades"];        
+        $this->nombre=$datos["nombre"];
+        $this->descripcion=$datos["descripcion"];
+        $this->responsable=$datos["responsable"];
+        $this->valoracion=$datos["valoracion"];
+        $this->coddocente=$datos["coddocente"];
+        $this->codtipo=$datos["codtipo"];        
     }
     
-    private function getDocentes()
+    private function getActividades()
     {
         $datos = $this->select();
         return $datos->toArray();
     }
-    
-    public function getDocentesPorId($cc)
+        
+    public function crearActividad($data=  array())
     {
-        $cc = (int)$cc;
-        $rowset= $this->select(array('cedula'=>$cc));
+        self::cargarAtribActividades($data);
+        $array= array(
+            'codactividades'=> $this->codactividades,            
+            'nombre'=> $this->nombre,
+            'descripcion'=> $this->descripcion,
+            'responsable' => $this->responsable,
+            'valoracion'=>  $this->valoracion,
+            'coddocente'=> $this->coddocente,
+            'codtipo'=>  $this->codtipo            
+        );
+        $this->insert($array);
+    }
+    
+    public function getActividadPorId($codigo)
+    {
+        $codigo = (int)$codigo;
+        $rowset= $this->select(array('codactividades'=>$codigo));
         $row = $rowset->current();
         
         if(!$row)
         {
-            throw new Exception("No hay registros con la cedula $cc");
+            throw new Exception("No hay registros con la cedula $codigo");
         }
         
         return $row;
     }
     
-    public function crearDocente($data=  array())
+    public function actualizar($id, $data=array())
     {
-        self::cargarAtribDocen($data);
-        $array= array(
-            'cedula'=> $this->cedula,
-            'apellidos'=> $this->apellidos,
-            'nombres'=> $this->nombres,
-            'codigo'=> $this->codigo,
-            'facultad' => $this->facultad,
-            'unidadacademica'=>  $this->unidadacademica,
-            'semestreaño'=> $this->semestreaño,
-            'formacion'=>  $this->formacion,
-            'direccion'=> $this->direccion,
-            'telefono'=> $this->telefono,
-            'correo'=> $this->correo
-        );
-        $this->insert($array);
+        $this->update($data, array('codactividades'=>$id));
     }
     
-    public function actualizarDocente($id, $data=array())
+    public function borrar($id)
     {
-        $this->update($data, array('id'=>$id));
-    }
-    
-    public function borrarDocente($id)
-    {
-        $this->delete(array('cedula'=>$id));
+        $this->delete(array('codactividades'=>$id));
     }
 }

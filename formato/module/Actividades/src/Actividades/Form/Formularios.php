@@ -13,9 +13,9 @@ class Formularios extends Form{
         parent::__construct($name);
         
         $this->add(array(
-            'name'=>'cedula',
+            'name'=>'codactividades',
             'options'=> array(
-                'label'=>'Cedula',
+                'label'=>'CodActividad',
             ),
             'attributes'=>array(
                 'type'=>'text',
@@ -35,9 +35,9 @@ class Formularios extends Form{
         ));
         
         $this->add(array(
-            'name'=>'apellido',
+            'name'=>'descripcion',
             'options'=> array(
-                'label'=>'Apellido',
+                'label'=>'Descripcion',
             ),
             'attributes'=>array(
                 'type'=>'text',
@@ -46,9 +46,9 @@ class Formularios extends Form{
         ));
         
         $this->add(array(
-            'name'=>'codigo',
+            'name'=>'responsable',
             'options'=> array(
-                'label'=>'Codigo',
+                'label'=>'Responsable',
             ),
             'attributes'=>array(
                 'type'=>'text',
@@ -57,84 +57,48 @@ class Formularios extends Form{
         ));
         
         $this->add(array(
-            'name'=>'facultad',
+            'name'=>'valoracion',
             'options'=> array(
-                'label'=>'Facultad',
+                'label'=>'Valoracion',
             ),
             'attributes'=>array(
                 'type'=>'text',
                 'class'=>'input'
             ),
-        ));
-        $radio = new Element\Radio('facultad');
-        $radio->setLabel('Facutad');
-         
-        $this->add($radio);
-        
-        $radio = new Element\Radio('unidadacademica');
-        $radio->setLabel('Unidad Academica');
-         
-        $this->add($radio);
+        ));        
         
         $this->add(array(
-            'name'=>'semestre',
-            'options'=> array(
-                'label'=>'Semestre del Año',
+            'type' => 'Zend\Form\Element\Select',
+            'name' => 'coddocente',
+            'options' => array(
+                'label' => 'Cedula Docente',
+                'value_options' => array(
+                    '0' => 'Seleccione la cedula del docente',
+                    '1' => '1123',
+                    '2' => '456789'
+                ),
             ),
-            'attributes'=>array(
-                'type'=>'text',
-                'class'=>'input'
-            ),
+            'attributes' => array(
+                'value' => '0' //set selected to '0'
+            )
         ));
         
         $this->add(array(
-            'name'=>'formacion',
-            'options'=> array(
-                'label'=>'Formacion',
+            'type' => 'Zend\Form\Element\Select',
+            'name' => 'codtipo',
+            'options' => array(
+                'label' => 'Tipo de Modalidad',
+                'value_options' => array(
+                    '0' => 'Seleccione la modalidad',
+                    '1' => '1123',
+                    '2' => '456789'
+                ),
             ),
-            'attributes'=>array(
-                'type'=>'text',
-                'class'=>'input'
-            ),
-        ));
-        
-        $this->add(array(
-            'name'=>'direccion',
-            'options'=> array(
-                'label'=>'Direccion',
-            ),
-            'attributes'=>array(
-                'type'=>'text',
-                'class'=>'input'
-            ),
-        ));
-        
-        $this->add(array(
-            'name'=>'telefono',
-            'options'=> array(
-                'label'=>'Telefono',
-            ),
-            'attributes'=>array(
-                'type'=>'text',
-                'class'=>'input'
-            ),
-        ));
-        
-        $factory = new Factory();
-        
-        $correo = $factory->createElement(array(
-            
-            'type'=>'Zend\Form\Element\Email',
-            'name'=>'correo',
-            'options'=> array(
-                'label'=>'Correo'
-            ),
-            'attributes'=>array(
-                'class'=>'input'
-            ),
-        ));
-        
-        $this->add($correo);
+            'attributes' => array(
+                'value' => '0' //set selected to '0'
+            )
+        ));      
+     
         
         //boton
         $this->add(array(

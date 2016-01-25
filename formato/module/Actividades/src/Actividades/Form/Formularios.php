@@ -2,13 +2,11 @@
 
 namespace Actividades\Form;
 
-
 use Zend\Form\Form;
-use Zend\Form\Factory;
-use Zend\Form\Element;
+use \Actividades\Model\Entity\Actividades;
 
 class Formularios extends Form{
-    
+    public $adapter;
     public function __construct($name = null) {
         parent::__construct($name);
         
@@ -65,7 +63,7 @@ class Formularios extends Form{
                 'type'=>'text',
                 'class'=>'input'
             ),
-        ));        
+        )); 
         
         $this->add(array(
             'type' => 'Zend\Form\Element\Select',
